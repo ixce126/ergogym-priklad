@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+:root {
+    --primary: #fefb00; /* Tvoja žltá */
+    --primary-dark: #d4d100;
+    --black: #0a0a0a;
+    --dark-grey: #161616;
+    --light-grey: #252525;
+    --white: #ffffff;
+    --text-muted: #a0a0a0;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navigácia */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    background: rgba(10, 10, 10, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+nav .logo {
+    font-weight: 900;
+    font-size: 28px;
+    text-decoration: none;
+    color: var(--white);
+    letter-spacing: -1px;
+}
+
+nav .logo span { color: var(--primary); }
+
+nav ul { display: flex; list-style: none; gap: 30px; }
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+nav ul li a:hover { color: var(--primary); }
+
+/* Hero Sekcia */
+header {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 0 20px;
+}
+
+header h1 {
+    font-size: clamp(40px, 10vw, 90px);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Sekcie - Všeobecne */
+section { padding: 100px 10%; }
+h2 {
+    font-size: 36px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+/* App Sekcia */
+.app-section { background: var(--dark-grey); }
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+.feature-card {
+    background: var(--light-grey);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    transition: var(--transition);
+    border-bottom: 4px solid transparent;
+}
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-bottom: 4px solid var(--primary);
+}
+.feature-card i { font-size: 40px; color: var(--primary); margin-bottom: 20px; display: block; }
+
+/* Cenník */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+.price-card {
+    background: var(--dark-grey);
+    padding: 40px 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid var(--light-grey);
+    transition: var(--transition);
+}
+.price-card:hover { border-color: var(--primary); background: #1a1a1a; }
+.price-card h3 { font-size: 16px; margin-bottom: 15px; color: var(--text-muted); }
+.price-card .amount { font-size: 40px; font-weight: 900; color: var(--primary); }
+
+/* Galéria */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+.gallery-grid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: var(--transition);
+    filter: grayscale(30%);
+}
+.gallery-grid img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+}
+
+/* Kontaktný formulár */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.contact-form input, .contact-form textarea {
+    padding: 15px;
+    background: var(--dark-grey);
+    border: 1px solid var(--light-grey);
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+.btn-submit {
+    padding: 15px;
+    background: var(--primary);
+    color: black;
+    border: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+.btn-submit:hover { background: var(--white); }
+
+/* Otváracie hodiny */
+.hours-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--dark-grey);
+    padding: 50px;
+    border-radius: 20px;
+}
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--light-grey);
+}
+.hours-row:last-child { border: none; }
+.hours-row span:first-child { font-weight: 700; color: var(--text-muted); }
+.hours-row span:last-child { font-weight: 900; color: var(--primary); }
+
+/* Responzivita */
+@media (max-width: 768px) {
+    nav { flex-direction: column; gap: 20px; }
+    .contact-wrapper { grid-template-columns: 1fr; }
+    header h1 { font-size: 50px; }
+}
