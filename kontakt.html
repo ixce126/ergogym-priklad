@@ -186,10 +186,11 @@
                 </div>
             </div>
 
-            <form class="contact-form">
-                <input type="text" placeholder="Vaše meno" required>
-                <input type="email" placeholder="Váš Email" required>
-                <textarea placeholder="Vaša správa..." required></textarea>
+            <!-- INTEGROVANÝ FORMSPREE FORMULÁR -->
+            <form class="contact-form" action="https://formspree.io/f/xkopdvwl" method="POST">
+                <input type="text" name="meno" placeholder="Vaše meno" required>
+                <input type="email" name="email" placeholder="Váš Email" required>
+                <textarea name="sprava" placeholder="Vaša správa..." required></textarea>
                 <button type="submit" class="btn-submit">Odoslať správu</button>
             </form>
         </div>
