@@ -63,7 +63,7 @@ nav ul li a:hover { color: var(--primary); }
 
 /* Hero Sekcia */
 header {
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
