@@ -1,30 +1,57 @@
-<!DOCTYPE html>
-<html lang="sk">
-<head>
-    <meta charset="UTF-8">
-    <title>Otváracie hodiny | ERGO GYM</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav>
-        <a href="index.html" class="logo">ERGO <span>GYM</span></a>
-        <ul>
-            <li><a href="index.html">Domov</a></li>
-            <li><a href="otvaracie-hodiny.html">Otváracie hodiny</a></li>
-            <li><a href="galeria.html">Galéria</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-    </nav>
+/* Centrovací obal pre celú plochu */
+.hours-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px); /* Odpočíta výšku navigácie */
+    padding: 20px;
+}
 
-    <div class="hours-container">
-        <h2 style="text-align: center; margin-bottom: 40px; color: var(--primary);">OTVÁRACIE HODINY</h2>
-        <div class="hours-row"><span>PONDELOK</span><span>07:00 – 20:00</span></div>
-        <div class="hours-row"><span>UTOROK</span><span>07:00 – 20:00</span></div>
-        <div class="hours-row"><span>STREDA</span><span>07:00 – 20:00</span></div>
-        <div class="hours-row"><span>ŠTVRTOK</span><span>07:00 – 20:00</span></div>
-        <div class="hours-row"><span>PIATOK</span><span>07:00 – 20:00</span></div>
-        <div class="hours-row"><span>SOBOTA</span><span>09:00 – 13:00</span></div>
-        <div class="hours-row"><span>NEDEĽA</span><span>09:00 – 13:00</span></div>
-    </div>
-</body>
-</html>
+/* Samotná karta s hodinami */
+.hours-container {
+    background: #111; /* Jemne svetlejšia čierna ako pozadie */
+    width: 100%;
+    max-width: 450px; /* Zmenšená šírka */
+    padding: 40px;
+    border: 1px solid #222;
+    border-top: 4px solid var(--primary); /* Výrazná žltá linka navrchu */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.hours-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #222;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+/* Efekt pri prejdení myšou */
+.hours-row:hover {
+    color: var(--primary);
+    padding-left: 5px;
+    border-bottom-color: var(--primary);
+}
+
+.hours-row span:first-child {
+    font-weight: bold;
+}
+
+.hours-row span:last-child {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* Posledný riadok bez spodnej linky */
+.hours-row:last-child {
+    border-bottom: none;
+}
