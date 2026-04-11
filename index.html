@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ERGO GYM | Domov</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <!-- Import moderného fontu -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary: #fefb00;
             --black: #0a0a0a;
-            --dark-grey: #161616;
-            --light-grey: #222;
+            --dark-grey: #121212;
+            --light-grey: #1c1c1c;
             --white: #ffffff;
-            --text-muted: #aaa;
+            --text-muted: #888;
         }
 
         * {
@@ -31,16 +30,18 @@
             line-height: 1.6;
         }
 
-        /* Navigácia */
+        /* Navigácia plávajúca nad headerom */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background: var(--black);
-            border-bottom: 1px solid var(--light-grey);
-            position: sticky;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
         }
 
@@ -67,103 +68,153 @@
 
         nav ul li a:hover { color: var(--primary); }
 
-        /* Hero Sekcia */
+        /* Hero Sekcia - FULL SCREEN */
         header {
-            height: 70vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
+                        url('https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             padding: 0 20px;
         }
 
         header h1 {
-            font-size: clamp(40px, 8vw, 80px);
+            font-size: clamp(50px, 10vw, 100px);
             font-weight: 900;
             text-transform: uppercase;
-            line-height: 1;
+            line-height: 0.9;
         }
 
         header p {
             color: var(--primary);
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-top: 10px;
+            letter-spacing: 5px;
+            margin-top: 15px;
+            font-size: 1.2rem;
         }
 
-        /* Sekcia Aplikácia */
+        /* Sekcia Aplikácia s obrázkom */
         .app-section {
-            padding: 80px 10%;
+            padding: 100px 10%;
             background-color: var(--dark-grey);
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
         }
 
-        .app-section h2 {
-            font-size: 32px;
+        .app-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .app-text h2 {
+            font-size: 38px;
             font-weight: 900;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-transform: uppercase;
+            line-height: 1.1;
         }
 
-        .app-section h2 span { color: var(--primary); }
+        .app-text h2 span { color: var(--primary); }
 
-        .app-content {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
-            color: var(--white);
+        .app-text p { margin-bottom: 20px; font-size: 17px; color: #ddd; }
+
+        .app-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
         }
 
-        .app-content p { margin-bottom: 20px; }
+        .app-image img {
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
 
-        /* Sekcia Cenník */
+        /* Tlačidlá obchodov */
+        .store-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .store-btn {
+            background: var(--white);
+            color: var(--black);
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .store-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Sekcia Cenník - OPRAVENÁ MRIEŽKA */
         .pricing-section {
-            padding: 80px 8%;
+            padding: 100px 8%;
         }
 
         .pricing-section h2 {
             text-align: center;
-            font-size: 32px;
+            font-size: 38px;
             font-weight: 900;
             text-transform: uppercase;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .pricing-section h2 span { color: var(--primary); }
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* Tri stĺpce na desktope pre vyvážený vzhľad (3+3) */
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .price-card {
-            background: var(--dark-grey);
+            background: var(--light-grey);
             padding: 40px 25px;
-            border-radius: 10px;
+            border-radius: 12px;
             text-align: center;
-            border: 1px solid var(--light-grey);
+            border: 1px solid rgba(255,255,255,0.05);
             transition: 0.3s;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
+            min-height: 220px;
         }
 
         .price-card:hover {
             border-color: var(--primary);
-            transform: translateY(-5px);
+            background: #222;
         }
 
         .price-card h3 {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-muted);
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             letter-spacing: 1px;
         }
 
@@ -171,27 +222,34 @@
             font-size: 42px;
             font-weight: 900;
             color: var(--primary);
-            margin-bottom: 10px;
         }
 
         .price-card .note {
             font-size: 13px;
             color: var(--text-muted);
-            font-style: italic;
+            margin-top: 10px;
+            line-height: 1.3;
         }
 
         footer {
             text-align: center;
-            padding: 40px;
-            color: #555;
-            font-size: 12px;
+            padding: 50px;
+            color: #444;
+            font-size: 13px;
             border-top: 1px solid #111;
         }
 
+        /* Responzivita */
+        @media (max-width: 1024px) {
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); } /* 2 stĺpce na tablete */
+        }
+
         @media (max-width: 768px) {
-            nav { flex-direction: column; gap: 15px; }
-            header h1 { font-size: 40px; }
-            .pricing-section { padding: 50px 5%; }
+            nav { flex-direction: column; gap: 15px; padding: 15px; }
+            header h1 { font-size: 45px; }
+            .app-section { padding: 60px 5%; text-align: center; }
+            .store-buttons { justify-content: center; }
+            .pricing-grid { grid-template-columns: 1fr; } /* 1 stĺpec na mobile */
         }
     </style>
 </head>
@@ -212,12 +270,24 @@
     </header>
 
     <section class="app-section">
-        <div class="app-content">
+        <div class="app-text">
             <h2>Mobilná <span>Aplikácia</span></h2>
             <p>Spúšťame novú mobilnú aplikáciu fitnes centra Ergo gym.</p>
             <p>Maj svoju virtuálnu permanentku fitnes centra vždy po ruke a buď informovaný o všetkých novinkách.</p>
             <p style="font-weight: bold; color: var(--primary);">Tvoja virtuálna permanentka je už dostupná pre Android a Apple store.</p>
             <p>Využiť ju môžeš pri vstupe do nášho autonómneho fitnes centra.</p>
+            
+            <div class="store-buttons">
+                <a href="https://apps.apple.com/us/app/ergogym-bratislava/id6514317859" target="_blank" class="store-btn">
+                    App Store
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.ergogym&hl=sk" target="_blank" class="store-btn">
+                    Google Play
+                </a>
+            </div>
+        </div>
+        <div class="app-image">
+            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102851-1536x1153.jpg" alt="Ergo Gym priestory">
         </div>
     </section>
 
@@ -227,55 +297,43 @@
         <div class="pricing-grid">
             <!-- Vstup -->
             <div class="price-card">
-                <div>
-                    <h3>Vstup</h3>
-                    <div class="amount">6,50 €</div>
-                </div>
+                <h3>Jednorazový Vstup</h3>
+                <div class="amount">6,50 €</div>
             </div>
 
             <!-- Študent -->
             <div class="price-card">
-                <div>
-                    <h3>Vstup študent</h3>
-                    <div class="amount">4,50 €</div>
-                </div>
-                <div class="note">* V čase od 7:00 do 16:00</div>
+                <h3>Vstup študent</h3>
+                <div class="amount">4,50 €</div>
+                <p class="note">* V čase od 7:00 do 16:00</p>
             </div>
 
             <!-- Mesačná -->
-            <div class="price-card">
-                <div>
-                    <h3>Mesačná permanentka</h3>
-                    <div class="amount">53 €</div>
-                </div>
-                <div class="note">* Platnosť 30 dní od zakúpenia</div>
+            <div class="price-card" style="border-color: var(--primary);">
+                <h3>Mesačná permanentka</h3>
+                <div class="amount">53 €</div>
+                <p class="note">* Platnosť 30 dní od zakúpenia</p>
             </div>
 
             <!-- 10 vstupov -->
             <div class="price-card">
-                <div>
-                    <h3>10 vstupová permanentka</h3>
-                    <div class="amount">55 €</div>
-                </div>
-                <div class="note">* Platnosť 3 mesiace</div>
+                <h3>10 vstupová permanentka</h3>
+                <div class="amount">55 €</div>
+                <p class="note">* Platnosť 3 mesiace</p>
             </div>
 
             <!-- 20 vstupov -->
             <div class="price-card">
-                <div>
-                    <h3>20 vstupová permanentka</h3>
-                    <div class="amount">100 €</div>
-                </div>
-                <div class="note">* Platnosť 3 mesiace</div>
+                <h3>20 vstupová permanentka</h3>
+                <div class="amount">100 €</div>
+                <p class="note">* Platnosť 3 mesiace</p>
             </div>
 
             <!-- 30 vstupov -->
             <div class="price-card">
-                <div>
-                    <h3>30 vstupová permanentka</h3>
-                    <div class="amount">135 €</div>
-                </div>
-                <div class="note">* Platnosť 4 mesiace</div>
+                <h3>30 vstupová permanentka</h3>
+                <div class="amount">135 €</div>
+                <p class="note">* Platnosť 4 mesiace</p>
             </div>
         </div>
     </section>
