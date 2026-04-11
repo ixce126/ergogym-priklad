@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="sk">
 <head>
@@ -17,44 +18,19 @@
         </ul>
     </nav>
 
-    <section class="gallery-section">
-        <h2>Galéria <span>priestorov</span></h2>
-        <p style="text-align: center; color: var(--text-muted); margin-top: -30px; margin-bottom: 40px;">Kliknutím na fotografiu ju zväčšíte</p>
-        
+    <section>
+        <h2>Galéria priestorov</h2>
         <div class="gallery-grid">
-            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg" alt="ErgoGym" onclick="openLightbox(this.src)">
-            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102851-1536x1153.jpg" alt="ErgoGym" onclick="openLightbox(this.src)">
-            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102951-1536x1153.jpg" alt="ErgoGym" onclick="openLightbox(this.src)">
-            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102828-1536x1153.jpg" alt="ErgoGym" onclick="openLightbox(this.src)">
-            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102937-1536x1153.jpg" alt="ErgoGym" onclick="openLightbox(this.src)">
-            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094622-1536x1153.jpg" alt="ErgoGym" onclick="openLightbox(this.src)">
-            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_093239-1536x1153.jpg" alt="ErgoGym" onclick="openLightbox(this.src)">
-            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094634-1536x1153.jpg" alt="ErgoGym" onclick="openLightbox(this.src)">
-            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102803-1536x1153.jpg" alt="ErgoGym" onclick="openLightbox(this.src)">
+            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg">
+            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102851-1536x1153.jpg">
+            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102951-1536x1153.jpg">
+            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102828-1536x1153.jpg">
+            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102937-1536x1153.jpg">
+            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094622-1536x1153.jpg">
+            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_093239-1536x1153.jpg">
+            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094634-1536x1153.jpg">
+            <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102803-1536x1153.jpg">
         </div>
     </section>
-
-    <!-- LIGHTBOX MODAL -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-btn">&times;</span>
-        <img id="lightbox-img" src="" alt="Zväčšený obrázok">
-    </div>
-
-    <footer>
-        &copy; 2025 ERGO GYM BRATISLAVA
-    </footer>
-
-    <script>
-        function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
-            document.getElementById('lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Zakáže scrollovanie na pozadí
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Opäť povolí scrollovanie
-        }
-    </script>
 </body>
 </html>
