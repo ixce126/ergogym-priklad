@@ -102,10 +102,15 @@
             height: 100%;
         }
 
-        /* Štýly pre správy po odoslaní */
-        #success-message, #error-message {
+        /* Animácia pre poďakovanie */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        #success-message {
             display: none;
-            padding: 30px;
+            padding: 40px;
             background: #1a1a1a;
             border-radius: 15px;
             border: 2px solid var(--primary);
@@ -114,9 +119,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            animation: fadeInScale 0.5s ease-out forwards;
         }
 
-        #success-message h3 { color: var(--primary); margin-bottom: 10px; }
+        .checkmark-icon {
+            width: 80px;
+            height: 80px;
+            fill: var(--primary);
+            margin-bottom: 20px;
+        }
 
         .contact-form input, .contact-form textarea {
             width: 100%;
@@ -144,11 +155,6 @@
             text-transform: uppercase;
             cursor: pointer;
             transition: 0.3s;
-        }
-
-        .btn-submit:disabled {
-            background: #555;
-            cursor: not-allowed;
         }
 
         @media (max-width: 768px) {
@@ -184,24 +190,21 @@
             </div>
 
             <div class="form-container">
-                <!-- Úspešná správa (skrytá) -->
-                <div id="success-message" data-fs-success>
-                    <h3>ĎAKUJEME!</h3>
-                    <p>Vaša správa bola úspešne odoslaná. Budeme vás kontaktovať čo najskôr.</p>
+                <!-- Úspešná správa s animáciou a fajkou -->
+                <div id="success-message">
+                    <svg class="checkmark-icon" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <h3 style="color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">Ďakujeme!</h3>
+                    <p style="font-size: 18px; font-weight: 600;">Správa odoslaná</p>
                 </div>
 
-                <!-- Chybová správa (skrytá) -->
-                <div id="error-message" data-fs-error>
-                    <h3 style="color: #ff4444;">CHYBA!</h3>
-                    <p>Niekde nastala chyba. Skúste to prosím neskôr.</p>
-                </div>
-
-                <!-- Samotný formulár -->
+                <!-- Formulár -->
                 <form id="contact-form" class="contact-form">
-                    <input type="text" name="meno" placeholder="Vaše meno" required data-fs-field>
-                    <input type="email" name="email" placeholder="Váš Email" required data-fs-field>
-                    <textarea name="sprava" placeholder="Vaša správa..." required data-fs-field></textarea>
-                    <button type="submit" class="btn-submit" data-fs-submit-btn>Odoslať správu</button>
+                    <input type="text" name="meno" placeholder="Vaše meno" required>
+                    <input type="email" name="email" placeholder="Váš Email" required>
+                    <textarea name="sprava" placeholder="Vaša správa..." required></textarea>
+                    <button type="submit" class="btn-submit">Odoslať správu</button>
                 </form>
             </div>
         </div>
@@ -211,14 +214,12 @@
         </div>
     </section>
 
-    <!-- Formspree AJAX Skripty -->
     <script>
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', { 
             formElement: '#contact-form', 
             formId: 'xkopdvwl',
             onSuccess: function() {
-                // Po úspechu skryjeme formulár a ukážeme success message
                 document.getElementById('contact-form').style.display = 'none';
                 document.getElementById('success-message').style.display = 'flex';
             }
