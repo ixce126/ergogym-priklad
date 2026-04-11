@@ -336,3 +336,57 @@ footer { padding: 40px; text-align: center; color: #555; font-size: 12px; border
 @media (max-width: 768px) {
     header h1 { font-size: 45px; }
 }
+/* Resetuj základné okraje, aby nevznikali medzery */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif; /* Prípadne tvoj font */
+}
+
+/* Navigácia - aby nezaberala miesto nad headerom, môžeme ju dať fixne alebo ju započítať */
+nav {
+    position: absolute; /* Pláva nad obsahom */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: transparent; /* Priesvitné pozadie na úvode */
+}
+
+/* Hlavná úprava pre HEADER */
+header {
+    height: 100vh; /* 100% výšky obrazovky */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vycentruje text vertikálne */
+    align-items: center;     /* Vycentruje text horizontálne */
+    text-align: center;
+    
+    /* Nastavenie obrázka na pozadí */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('tvoj-obrazok.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Voliteľné: vytvorí parallax efekt */
+    
+    color: white;
+}
+
+header h1 {
+    font-size: 5rem; /* Zväčšenie hlavného nadpisu */
+    margin-bottom: 10px;
+}
+
+/* Sekcie pod headerom */
+.home-section {
+    padding: 100px 20px; /* Dodatočný priestor, aby obsah nevyzeral natlačený */
+    min-height: 500px;  /* Aby mali sekcie peknú výšku */
+}
