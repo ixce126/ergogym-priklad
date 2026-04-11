@@ -1,6 +1,101 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --font-family: 'Arial', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+}
+
+/* Reset styles */
+html, body {
+    height: 100%;
+}
+
+/* Navigation styling */
+nav {
+    background-color: var(--primary-color);
+    padding: 1em;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+/* Full-height header */
 header {
-    height: 100vh;
-    background-image: url('path/to/your/image.jpg'); /* Update this with the actual image path */
+    background: url('ergogym_image_url') no-repeat center center;
     background-size: cover;
-    background-position: center;
+    height: 100vh;
+    position: relative;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* App section */
+.app {
+    padding: 20px;
+}
+
+/* Pricing section */
+.pricing {
+    margin: 20px 0;
+}
+
+/* Gallery section */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gallery img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px;
+}
+
+/* Contact form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+/* Hours display */
+.hours {
+    margin: 20px 0;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
 }
