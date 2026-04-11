@@ -2,11 +2,201 @@
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ERGO GYM | Domov</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Import moderného fontu -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #fefb00;
+            --black: #0a0a0a;
+            --dark-grey: #161616;
+            --light-grey: #222;
+            --white: #ffffff;
+            --text-muted: #aaa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Navigácia */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--black);
+            border-bottom: 1px solid var(--light-grey);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-weight: 900;
+            font-size: 24px;
+            text-decoration: none;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        nav .logo span { color: var(--primary); }
+
+        nav ul { display: flex; list-style: none; gap: 25px; }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover { color: var(--primary); }
+
+        /* Hero Sekcia */
+        header {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        header p {
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 10px;
+        }
+
+        /* Sekcia Aplikácia */
+        .app-section {
+            padding: 80px 10%;
+            background-color: var(--dark-grey);
+            text-align: center;
+        }
+
+        .app-section h2 {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .app-section h2 span { color: var(--primary); }
+
+        .app-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: var(--white);
+        }
+
+        .app-content p { margin-bottom: 20px; }
+
+        /* Sekcia Cenník */
+        .pricing-section {
+            padding: 80px 8%;
+        }
+
+        .pricing-section h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+
+        .pricing-section h2 span { color: var(--primary); }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .price-card {
+            background: var(--dark-grey);
+            padding: 40px 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--light-grey);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .price-card h3 {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .price-card .amount {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .price-card .note {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #555;
+            font-size: 12px;
+            border-top: 1px solid #111;
+        }
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 15px; }
+            header h1 { font-size: 40px; }
+            .pricing-section { padding: 50px 5%; }
+        }
+    </style>
 </head>
 <body>
+
     <nav>
         <a href="index.html" class="logo">ERGO <span>GYM</span></a>
         <ul>
@@ -18,39 +208,81 @@
 
     <header>
         <h1>ERGO GYM</h1>
-        <p style="color: var(--primary); font-weight: bold; letter-spacing: 2px;">AUTONÓMNE FITNESS CENTRUM</p>
+        <p>Autonómne fitness centrum</p>
     </header>
 
-    <section class="home-section app-section">
-        <h2>POUŽÍVANÍM <span>APLIKÁCIE</span> ZÍSKATE</h2>
-        <div class="app-grid">
-            <p>✓ VSTUP DO FITNESS CENTRA</p>
-            <p>✓ KÚPA PERMANENTIEK</p>
-            <p>✓ OTVÁRANIE DVERÍ POMOCOU APP</p>
-            <p>✓ KÚPA ČLENSTVA</p>
+    <section class="app-section">
+        <div class="app-content">
+            <h2>Mobilná <span>Aplikácia</span></h2>
+            <p>Spúšťame novú mobilnú aplikáciu fitnes centra Ergo gym.</p>
+            <p>Maj svoju virtuálnu permanentku fitnes centra vždy po ruke a buď informovaný o všetkých novinkách.</p>
+            <p style="font-weight: bold; color: var(--primary);">Tvoja virtuálna permanentka je už dostupná pre Android a Apple store.</p>
+            <p>Využiť ju môžeš pri vstupe do nášho autonómneho fitnes centra.</p>
         </div>
     </section>
 
-    <section class="home-section">
-        <h2>OTVÁRACIE <span>HODINY</span></h2>
-        <div class="hours-mini-container">
-            <div class="hours-row"><span>PONDELOK - PIATOK</span><span>07:00 – 20:00</span></div>
-            <div class="hours-row"><span>SOBOTA - NEDEĽA</span><span>09:00 – 13:00</span></div>
-        </div>
-    </section>
-
-    <section class="home-section app-section">
-        <h2><span>CENNÍK</span></h2>
+    <section class="pricing-section">
+        <h2>Aktuálny <span>Cenník</span></h2>
+        
         <div class="pricing-grid">
-            <div class="price-card"><h3>VSTUP</h3><div class="amount">6,50 €</div></div>
-            <div class="price-card"><h3>ŠTUDENT</h3><div class="amount">4,50 €</div></div>
-            <div class="price-card"><h3>MESAČNÁ</h3><div class="amount">53,00 €</div></div>
-            <div class="price-card"><h3>10 VSTUPOV</h3><div class="amount">55,00 €</div></div>
+            <!-- Vstup -->
+            <div class="price-card">
+                <div>
+                    <h3>Vstup</h3>
+                    <div class="amount">6,50 €</div>
+                </div>
+            </div>
+
+            <!-- Študent -->
+            <div class="price-card">
+                <div>
+                    <h3>Vstup študent</h3>
+                    <div class="amount">4,50 €</div>
+                </div>
+                <div class="note">* V čase od 7:00 do 16:00</div>
+            </div>
+
+            <!-- Mesačná -->
+            <div class="price-card">
+                <div>
+                    <h3>Mesačná permanentka</h3>
+                    <div class="amount">53 €</div>
+                </div>
+                <div class="note">* Platnosť 30 dní od zakúpenia</div>
+            </div>
+
+            <!-- 10 vstupov -->
+            <div class="price-card">
+                <div>
+                    <h3>10 vstupová permanentka</h3>
+                    <div class="amount">55 €</div>
+                </div>
+                <div class="note">* Platnosť 3 mesiace</div>
+            </div>
+
+            <!-- 20 vstupov -->
+            <div class="price-card">
+                <div>
+                    <h3>20 vstupová permanentka</h3>
+                    <div class="amount">100 €</div>
+                </div>
+                <div class="note">* Platnosť 3 mesiace</div>
+            </div>
+
+            <!-- 30 vstupov -->
+            <div class="price-card">
+                <div>
+                    <h3>30 vstupová permanentka</h3>
+                    <div class="amount">135 €</div>
+                </div>
+                <div class="note">* Platnosť 4 mesiace</div>
+            </div>
         </div>
     </section>
 
     <footer>
-        &copy; 2025 ERGO GYM BRATISLAVA
+        &copy; 2025 ERGO GYM BRATISLAVA | Všetky práva vyhradené.
     </footer>
+
 </body>
 </html>
