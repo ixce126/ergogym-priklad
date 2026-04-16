@@ -25,7 +25,7 @@
         }
 
         html, body {
-            overflow-x: hidden; /* Zabráni horizontálnemu skrolovaniu */
+            overflow-x: hidden;
             background-color: var(--black);
             color: var(--white);
             line-height: 1.6;
@@ -36,7 +36,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding: 15px 8%;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
@@ -48,22 +48,21 @@
 
         nav .logo {
             font-weight: 900;
-            font-size: 20px;
+            font-size: 22px;
             text-decoration: none;
             color: var(--white);
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         nav .logo span { color: var(--primary); }
 
-        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav ul { display: flex; list-style: none; gap: 25px; }
 
         nav ul li a {
             color: var(--white);
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             transition: 0.3s;
         }
@@ -111,14 +110,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8));
             z-index: 2;
         }
 
         header h1 {
             position: relative;
             z-index: 3;
-            font-size: clamp(40px, 12vw, 90px);
+            font-size: clamp(45px, 12vw, 90px);
             font-weight: 900;
             text-transform: uppercase;
             line-height: 0.9;
@@ -130,62 +129,66 @@
             color: var(--primary);
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             margin-top: 15px;
-            font-size: clamp(12px, 3vw, 18px);
+            font-size: clamp(12px, 2.5vw, 16px);
         }
 
         /* Sekcia Cenník + Hodiny */
         .full-section {
-            padding: 100px 5%;
+            padding: 120px 8%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .pricing-container {
             display: flex;
-            gap: 50px;
+            gap: 40px;
+            align-items: flex-start; /* Zarovná začiatok oboch stĺpcov */
             flex-wrap: wrap;
         }
 
-        .pricing-side { flex: 2; min-width: 300px; }
+        .pricing-side { flex: 2; min-width: 350px; }
         .hours-side { flex: 1; min-width: 300px; }
 
         .section-title {
-            font-size: clamp(28px, 5vw, 40px);
+            font-size: clamp(28px, 4vw, 36px);
             font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 30px;
+            height: 50px; /* Fixná výška pre zarovnanie nadpisov vedľa seba */
+            display: flex;
+            align-items: center;
         }
 
         .section-title span { color: var(--primary); }
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(2, 1fr); /* 2 stĺpce ako v origináli */
             gap: 15px;
         }
 
         .price-card {
             background: var(--dark-grey);
-            padding: 30px 20px;
+            padding: 25px 20px;
             border-radius: 12px;
             text-align: center;
             border: 1px solid #222;
             transition: 0.3s;
         }
 
-        .price-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .price-card:hover { border-color: var(--primary); }
 
         .price-card h3 {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .price-card .amount {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 900;
             color: var(--primary);
         }
@@ -193,7 +196,7 @@
         .price-card .note {
             font-size: 11px;
             color: var(--text-muted);
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         /* Otváracie hodiny */
@@ -209,7 +212,7 @@
             justify-content: space-between;
             padding: 12px 0;
             border-bottom: 1px solid #222;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .hours-row:last-child { border: none; }
@@ -221,6 +224,7 @@
             background-color: var(--dark-grey);
             display: flex;
             align-items: center;
+            overflow: hidden;
         }
 
         .app-container {
@@ -232,12 +236,12 @@
 
         .app-text-side {
             flex: 1;
-            padding: 60px 5%;
-            min-width: 320px;
+            padding: 60px 8%;
+            min-width: 350px;
         }
 
         .app-text-side h2 {
-            font-size: clamp(30px, 6vw, 48px);
+            font-size: clamp(32px, 5vw, 48px);
             font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 25px;
@@ -245,12 +249,12 @@
         }
 
         .app-text-side h2 span { color: var(--primary); }
-        .app-text-side p { margin-bottom: 20px; font-size: 16px; color: #ccc; max-width: 500px; }
+        .app-text-side p { margin-bottom: 20px; font-size: 18px; color: #ccc; }
 
         .app-image-side {
-            flex: 1;
+            flex: 1.4;
             height: 100vh;
-            min-width: 320px;
+            min-width: 400px;
         }
 
         .app-image-side img {
@@ -263,73 +267,46 @@
             display: flex;
             gap: 15px;
             margin-top: 35px;
-            flex-wrap: wrap;
         }
 
         .btn {
             background: var(--white);
             color: var(--black);
-            padding: 14px 25px;
+            padding: 12px 30px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 900;
             text-transform: uppercase;
             font-size: 12px;
             transition: 0.3s;
-            text-align: center;
-            min-width: 160px;
         }
 
-        .btn:hover { background: var(--primary); transform: scale(1.05); }
+        .btn:hover { background: var(--primary); }
 
         footer {
             text-align: center;
-            padding: 40px 20px;
-            color: #555;
-            font-size: 11px;
+            padding: 40px;
+            color: #444;
+            font-size: 12px;
             background: var(--black);
-            letter-spacing: 1px;
         }
 
-        /* Responzivita */
+        /* Upravená Responzivita */
         @media (max-width: 1024px) {
-            .app-image-side { height: 60vh; }
-            .app-full-section { min-height: auto; }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
-            }
-            
-            nav ul { gap: 15px; }
-
-            .full-section { padding-top: 120px; }
-            
-            .app-image-side {
-                height: 400px;
-                order: 2; /* Obrázok pôjde pod text */
-            }
-            
-            .app-text-side {
-                order: 1;
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 60px 8%;
-            }
-
+            .pricing-container { flex-direction: column; }
+            .pricing-side, .hours-side { flex: none; width: 100%; min-width: 100%; }
+            .section-title { height: auto; margin-bottom: 20px; }
+            .app-image-side { height: 50vh; order: 2; min-width: 100%; }
+            .app-text-side { order: 1; text-align: center; padding: 60px 8%; }
             .store-btns { justify-content: center; }
         }
 
-        @media (max-width: 480px) {
-            header h1 { font-size: 42px; }
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 10px; padding: 15px; }
             .pricing-grid { grid-template-columns: 1fr; }
-            .btn { width: 100%; }
-            .section-title { text-align: center; }
+            .full-section { padding-top: 140px; }
+            .store-btns { flex-direction: column; align-items: center; }
+            .btn { width: 200px; text-align: center; }
         }
     </style>
 </head>
@@ -351,7 +328,7 @@
         <p>Autonómne fitness centrum</p>
     </header>
 
-    <section class="full-section" id="cennik">
+    <section class="full-section">
         <div class="pricing-container">
             <div class="pricing-side">
                 <h2 class="section-title">Aktuálny <span>Cenník</span></h2>
