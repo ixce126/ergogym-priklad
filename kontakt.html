@@ -3,154 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt | ERGO GYM</title>
+    <title>ERGO GYM | Kontakt & Sociálne siete</title>
     <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome pre ikony -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         :root {
             --primary: #fefb00;
-            --dark: #111111;
-            --light-grey: #333333;
+            --black: #0a0a0a;
+            --dark-grey: #121212;
             --white: #ffffff;
-            --text-grey: #cccccc;
+            --text-muted: #888;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            background-color: var(--dark);
+            background-color: var(--black);
             color: var(--white);
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* Navigácia */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 10%;
-            background: rgba(0, 0, 0, 0.9);
-            border-bottom: 1px solid var(--light-grey);
+            padding: 20px 8%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo {
-            font-size: 24px;
+        nav .logo {
             font-weight: 900;
+            font-size: 24px;
             text-decoration: none;
             color: var(--white);
             text-transform: uppercase;
         }
 
-        .logo span { color: var(--primary); }
+        nav .logo span { color: var(--primary); }
 
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 30px; }
-        nav ul li a { text-decoration: none; color: var(--white); font-weight: 500; transition: 0.3s; }
-        nav ul li a:hover { color: var(--primary); }
+        nav ul { display: flex; list-style: none; gap: 25px; }
 
-        section {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        h2 {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 40px;
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
             text-transform: uppercase;
-        }
-
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: stretch; /* Toto zabezpečí, že obe strany sú rovnako vysoké */
-        }
-
-        .hours-card {
-            background: #1a1a1a;
-            padding: 40px;
-            border-radius: 15px;
-            height: 100%;
-        }
-
-        .form-container {
-            position: relative;
-            height: 100%;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        /* Fade-in animácia */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        #success-message {
-            display: none; /* Spustí sa cez JS */
-            padding: 40px;
-            background: #1a1a1a;
-            border-radius: 15px;
-            border: 2px solid var(--primary);
-            text-align: center;
-            height: 100%; /* Vyplní presne miesto po formulári */
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.6s ease-in-out;
-        }
-
-        .checkmark-icon {
-            width: 80px;
-            height: 80px;
-            fill: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            background: #222;
-            border: 1px solid var(--light-grey);
-            color: white;
-            border-radius: 8px;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-
-        .contact-form textarea {
-            flex-grow: 1;
-            resize: none;
-        }
-
-        .btn-submit {
-            background: var(--primary);
-            color: #000;
-            padding: 18px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 800;
-            text-transform: uppercase;
-            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
             transition: 0.3s;
         }
 
+        nav ul li a:hover { color: var(--primary); }
+
+        /* Hlavný obsah */
+        .content-wrapper {
+            flex: 1;
+            padding: 150px 8% 80px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(30px, 5vw, 45px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-title span { color: var(--primary); }
+
+        /* Sociálne Siete Sekcia */
+        .social-container {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: var(--dark-grey);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 30px;
+            border-radius: 50%;
+            border: 1px solid #222;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--black);
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(254, 251, 0, 0.2);
+        }
+
+        .social-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover i {
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #444;
+            font-size: 12px;
+            background: var(--black);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
         @media (max-width: 768px) {
-            .contact-wrapper { grid-template-columns: 1fr; }
-            .contact-form textarea { height: 250px; }
+            nav { flex-direction: column; gap: 10px; padding: 15px; }
+            .content-wrapper { padding-top: 180px; }
+            .social-link { width: 60px; height: 60px; font-size: 24px; }
         }
     </style>
 </head>
 <body>
+
     <nav>
         <a href="index.html" class="logo">ERGO <span>GYM</span></a>
         <ul>
@@ -160,61 +154,26 @@
         </ul>
     </nav>
 
-    <section>
-        <h2>Kontaktujte nás</h2>
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <div class="hours-card">
-                    <h3 style="color: var(--primary); margin-bottom: 20px;">KDE NÁS NÁJDETE?</h3>
-                    <p style="font-size: 20px; font-weight: 700; margin-bottom: 30px;">Kazanská 4, 821 06 Podunajské Biskupice</p>
-                    
-                    <h3 style="color: var(--primary); margin-bottom: 10px;">TELEFÓN</h3>
-                    <p style="font-size: 20px; font-weight: 700; margin-bottom: 30px;">0902 696 732</p>
+    <div class="content-wrapper">
+        <h1 class="section-title">Sledujte <span>Nás</span></h1>
+        <p>Buďte súčasťou našej komunity a nenechajte si ujsť žiadne novinky.</p>
 
-                    <h3 style="color: var(--primary); margin-bottom: 10px;">EMAIL</h3>
-                    <p style="font-size: 20px; font-weight: 700;">info@ergogym.sk</p>
-                </div>
-            </div>
+        <div class="social-container">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/ergogym4" target="_blank" class="social-link" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
 
-            <div class="form-container">
-                <!-- Poďakovanie - má nastavenú rovnakú výšku ako formulár -->
-                <div id="success-message">
-                    <svg class="checkmark-icon" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                    <h3 style="color: var(--primary); text-transform: uppercase;">Ďakujeme!</h3>
-                    <p style="font-size: 18px; font-weight: 600;">Správa odoslaná</p>
-                </div>
-
-                <!-- Formulár -->
-                <form id="contact-form" class="contact-form">
-                    <input type="text" name="meno" placeholder="Vaše meno" required>
-                    <input type="email" name="email" placeholder="Váš Email" required>
-                    <textarea name="sprava" placeholder="Vaša správa..." required></textarea>
-                    <button type="submit" class="btn-submit">Odoslať správu</button>
-                </form>
-            </div>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/ergo_gym/" target="_blank" class="social-link" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
-        
-        <div style="margin-top: 50px; height: 400px; border-radius: 20px; overflow: hidden; border: 1px solid var(--light-grey);">
-            <iframe style="filter: invert(90%) hue-rotate(180deg)" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.784776100236!2d17.2023537!3d48.1143896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c88ca4d92416f%3A0x6b4c102a90100902!2sKazansk%C3%A1%204!5e0!3m2!1ssk!2ssk!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </section>
+    </div>
 
-    <script>
-        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-        formspree('initForm', { 
-            formElement: '#contact-form', 
-            formId: 'xkopdvwl',
-            onSuccess: function() {
-                // Skryjeme formulár a okamžite zobrazíme success message (s fade-in animáciou)
-                document.getElementById('contact-form').style.display = 'none';
-                const successMsg = document.getElementById('success-message');
-                successMsg.style.display = 'flex';
-            }
-        });
-    </script>
-    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+    <footer>
+        &copy; 2026 ERGO GYM BRATISLAVA | Všetky práva vyhradené.
+    </footer>
 
 </body>
 </html>
