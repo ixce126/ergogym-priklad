@@ -80,7 +80,6 @@
                         url('https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: scroll;
         }
 
         header h1 {
@@ -110,7 +109,7 @@
         .pricing-container {
             display: flex;
             gap: 40px;
-            align-items: stretch; /* Zabezpečí rovnakú výšku stĺpcov */
+            align-items: stretch;
             flex-wrap: wrap;
         }
 
@@ -126,7 +125,6 @@
             min-width: 300px;
             display: flex;
             flex-direction: column;
-            /* Odstránené position: sticky */
         }
 
         .section-title {
@@ -134,7 +132,7 @@
             font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 30px;
-            height: 50px; /* Fixná výška pre nadpisy kvôli zarovnaniu */
+            height: 50px;
         }
 
         .section-title span { color: var(--primary); }
@@ -143,7 +141,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            flex-grow: 1; /* Vyplní zvyšný priestor */
+            flex-grow: 1;
         }
 
         .price-card {
@@ -179,16 +177,17 @@
             margin-top: 8px;
         }
 
-        /* Otváracie hodiny - Upravené zarovnanie */
+        /* Otváracie hodiny */
         .hours-mini {
             background: var(--dark-grey);
             padding: 30px;
             border-radius: 12px;
-            border-top: 4px solid var(--primary);
-            flex-grow: 1; /* Vyplní výšku, aby lícoval s cenníkom */
+            /* Žltý pásik border-top bol odstránený */
+            border: 1px solid #222; 
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Rozloží dni rovnomerne zhora nadol */
+            justify-content: space-between;
         }
 
         .hours-row {
@@ -201,7 +200,6 @@
 
         .hours-row:last-of-type { border: none; }
 
-        .hours-row span:first-child { color: var(--white); font-weight: 400; }
         .hours-row span:last-child { color: var(--primary); font-weight: 700; }
 
         .hours-note {
@@ -295,7 +293,6 @@
             .app-image-side { height: 50vh; order: -1; }
             .app-full-section { flex-direction: column; }
             .app-text-side { padding: 60px 8%; text-align: center; }
-            .store-btns { justify-content: center; }
         }
 
         @media (max-width: 768px) {
@@ -325,7 +322,6 @@
     <section class="full-section">
         <div class="pricing-container">
             
-            <!-- Ľavá strana: Cenník -->
             <div class="pricing-side">
                 <h2 class="section-title">Aktuálny <span>Cenník</span></h2>
                 <div class="pricing-grid">
@@ -338,7 +334,8 @@
                         <div class="amount">4,50 €</div>
                         <p class="note">* V čase od 7:00 do 16:00</p>
                     </div>
-                    <div class="price-card" style="border-color: var(--primary);">
+                    <!-- Opravený riadok (odstránené inline štýly borderu) -->
+                    <div class="price-card">
                         <h3>Mesačná permanentka</h3>
                         <div class="amount">53 €</div>
                         <p class="note">* Platnosť 30 dní od zakúpenia</p>
@@ -361,38 +358,16 @@
                 </div>
             </div>
 
-            <!-- Pravá strana: Hodiny (Zarovnané a rozpísané) -->
             <div class="hours-side">
                 <h2 class="section-title">Otváracie <span>Hodiny</span></h2>
                 <div class="hours-mini">
-                    <div class="hours-row">
-                        <span>Pondelok</span>
-                        <span>07:00 – 20:00</span>
-                    </div>
-                    <div class="hours-row">
-                        <span>Utorok</span>
-                        <span>07:00 – 20:00</span>
-                    </div>
-                    <div class="hours-row">
-                        <span>Streda</span>
-                        <span>07:00 – 20:00</span>
-                    </div>
-                    <div class="hours-row">
-                        <span>Štvrtok</span>
-                        <span>07:00 – 20:00</span>
-                    </div>
-                    <div class="hours-row">
-                        <span>Piatok</span>
-                        <span>07:00 – 20:00</span>
-                    </div>
-                    <div class="hours-row">
-                        <span>Sobota</span>
-                        <span>09:00 – 13:00</span>
-                    </div>
-                    <div class="hours-row">
-                        <span>Nedeľa</span>
-                        <span>09:00 – 13:00</span>
-                    </div>
+                    <div class="hours-row"><span>Pondelok</span><span>07:00 – 20:00</span></div>
+                    <div class="hours-row"><span>Utorok</span><span>07:00 – 20:00</span></div>
+                    <div class="hours-row"><span>Streda</span><span>07:00 – 20:00</span></div>
+                    <div class="hours-row"><span>Štvrtok</span><span>07:00 – 20:00</span></div>
+                    <div class="hours-row"><span>Piatok</span><span>07:00 – 20:00</span></div>
+                    <div class="hours-row"><span>Sobota</span><span>09:00 – 13:00</span></div>
+                    <div class="hours-row"><span>Nedeľa</span><span>09:00 – 13:00</span></div>
                     <div class="hours-note">
                         Vstup do fitness centra je možný len s platnou registráciou v aplikácii.
                     </div>
@@ -409,8 +384,6 @@
                 <p>Spúšťame novú mobilnú aplikáciu fitnes centra Ergo gym.</p>
                 <p>Maj svoju virtuálnu permanentku fitnes centra vždy po ruke a buď informovaný o všetkých novinkách.</p>
                 <p style="font-weight: bold; color: var(--primary);">Dostupná pre Android a Apple store.</p>
-                <p>Využiť ju môžeš pri vstupe do nášho autonómneho fitnes centra.</p>
-                
                 <div class="store-btns">
                     <a href="https://apps.apple.com/us/app/ergogym-bratislava/id6514317859" target="_blank" class="btn">App Store</a>
                     <a href="https://play.google.com/store/apps/details?id=com.ergogym&hl=sk" target="_blank" class="btn">Google Play</a>
