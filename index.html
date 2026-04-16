@@ -68,7 +68,7 @@
 
         nav ul li a:hover { color: var(--primary); }
 
-        /* Hero Sekcia - Opravený scrolling */
+        /* Hero Sekcia */
         header {
             height: 100vh;
             display: flex;
@@ -80,7 +80,7 @@
                         url('https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: scroll; /* Zmenené z fixed na scroll pre lepšiu kompatibilitu */
+            background-attachment: scroll;
         }
 
         header h1 {
@@ -98,7 +98,7 @@
             margin-top: 15px;
         }
 
-        /* Sekcia Cenník + Hodiny (Vedľa seba) */
+        /* Sekcia Cenník + Hodiny */
         .full-section {
             min-height: 100vh;
             padding: 120px 8%;
@@ -110,20 +110,23 @@
         .pricing-container {
             display: flex;
             gap: 40px;
-            align-items: flex-start;
+            align-items: stretch; /* Zabezpečí rovnakú výšku stĺpcov */
             flex-wrap: wrap;
         }
 
         .pricing-side {
             flex: 2;
-            min-width: 300px;
+            min-width: 350px;
+            display: flex;
+            flex-direction: column;
         }
 
         .hours-side {
             flex: 1;
             min-width: 300px;
-            position: sticky;
-            top: 120px;
+            display: flex;
+            flex-direction: column;
+            /* Odstránené position: sticky */
         }
 
         .section-title {
@@ -131,6 +134,7 @@
             font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 30px;
+            height: 50px; /* Fixná výška pre nadpisy kvôli zarovnaniu */
         }
 
         .section-title span { color: var(--primary); }
@@ -139,6 +143,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
+            flex-grow: 1; /* Vyplní zvyšný priestor */
         }
 
         .price-card {
@@ -148,6 +153,9 @@
             text-align: center;
             border: 1px solid #222;
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .price-card:hover { border-color: var(--primary); }
@@ -171,24 +179,38 @@
             margin-top: 8px;
         }
 
-        /* Otváracie hodiny */
+        /* Otváracie hodiny - Upravené zarovnanie */
         .hours-mini {
             background: var(--dark-grey);
             padding: 30px;
             border-radius: 12px;
             border-top: 4px solid var(--primary);
+            flex-grow: 1; /* Vyplní výšku, aby lícoval s cenníkom */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Rozloží dni rovnomerne zhora nadol */
         }
 
         .hours-row {
             display: flex;
             justify-content: space-between;
-            padding: 15px 0;
+            padding: 10px 0;
             border-bottom: 1px solid #222;
+            font-size: 14px;
         }
 
-        .hours-row:last-child { border: none; }
+        .hours-row:last-of-type { border: none; }
 
-        .hours-row span:last-child { color: var(--primary); font-weight: bold; }
+        .hours-row span:first-child { color: var(--white); font-weight: 400; }
+        .hours-row span:last-child { color: var(--primary); font-weight: 700; }
+
+        .hours-note {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 20px;
+            text-align: center;
+            line-height: 1.4;
+        }
 
         /* Sekcia Aplikácia */
         .app-full-section {
@@ -269,7 +291,7 @@
         @media (max-width: 1024px) {
             .pricing-container { flex-direction: column; }
             .pricing-side, .hours-side { flex: none; width: 100%; }
-            .hours-side { position: static; margin-top: 40px; }
+            .section-title { height: auto; }
             .app-image-side { height: 50vh; order: -1; }
             .app-full-section { flex-direction: column; }
             .app-text-side { padding: 60px 8%; text-align: center; }
@@ -300,7 +322,6 @@
         <p>Autonómne fitness centrum</p>
     </header>
 
-    <!-- Sekcia 1: Cenník a Hodiny Vedľa Seba -->
     <section class="full-section">
         <div class="pricing-container">
             
@@ -340,28 +361,47 @@
                 </div>
             </div>
 
-            <!-- Pravá strana: Hodiny -->
+            <!-- Pravá strana: Hodiny (Zarovnané a rozpísané) -->
             <div class="hours-side">
                 <h2 class="section-title">Otváracie <span>Hodiny</span></h2>
                 <div class="hours-mini">
                     <div class="hours-row">
-                        <span>Pondelok - Piatok</span>
+                        <span>Pondelok</span>
                         <span>07:00 – 20:00</span>
                     </div>
                     <div class="hours-row">
-                        <span>Sobota - Nedeľa</span>
+                        <span>Utorok</span>
+                        <span>07:00 – 20:00</span>
+                    </div>
+                    <div class="hours-row">
+                        <span>Streda</span>
+                        <span>07:00 – 20:00</span>
+                    </div>
+                    <div class="hours-row">
+                        <span>Štvrtok</span>
+                        <span>07:00 – 20:00</span>
+                    </div>
+                    <div class="hours-row">
+                        <span>Piatok</span>
+                        <span>07:00 – 20:00</span>
+                    </div>
+                    <div class="hours-row">
+                        <span>Sobota</span>
                         <span>09:00 – 13:00</span>
                     </div>
-                    <p style="font-size: 11px; color: var(--text-muted); margin-top: 20px; text-align: center;">
+                    <div class="hours-row">
+                        <span>Nedeľa</span>
+                        <span>09:00 – 13:00</span>
+                    </div>
+                    <div class="hours-note">
                         Vstup do fitness centra je možný len s platnou registráciou v aplikácii.
-                    </p>
+                    </div>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Sekcia 2: Aplikácia -->
     <section class="app-full-section">
         <div class="app-container">
             <div class="app-text-side">
