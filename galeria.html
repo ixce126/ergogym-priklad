@@ -29,7 +29,6 @@
 
         <!-- Grid Galérie -->
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 15px;">
-            <!-- Obrázky (odporúčam pridať class pre hover v CSS, ale tu držím inline štýl podľa zadania) -->
             <div onclick="openLightbox(0)" style="height: 300px; overflow: hidden; cursor: pointer; background: #161616;">
                 <img src="https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
@@ -63,22 +62,24 @@
     <!-- Lightbox -->
     <div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 2000; justify-content: center; align-items: center; cursor: default; backdrop-filter: blur(5px);">
         
-        <!-- Pozadie na zavretie -->
+        <!-- Zavretie na pozadie -->
         <div onclick="closeLightbox()" style="position: absolute; width: 100%; height: 100%; z-index: -1;"></div>
         
-        <!-- Zavrieť X -->
+        <!-- X tlačidlo -->
         <span onclick="closeLightbox()" style="position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; cursor: pointer; font-weight: 200; z-index: 2100; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">&times;</span>
 
         <!-- Tlačidlo Doľava -->
-        <div onclick="prevImage()" style="position: absolute; left: 30px; width: 60px; height: 60px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 40px; cursor: pointer; user-select: none; z-index: 2100; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='scale(1.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='scale(1)'">&#8249;</div>
-
-        <!-- Obrázok -->
-        <div style="max-width: 80%; max-height: 80vh; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-            <img id="lightbox-img" src="" style="max-width: 100%; max-height: 80vh; border: 1px solid #333; object-fit: contain; box-shadow: 0 20px 50px rgba(0,0,0,0.5); opacity: 1; transform: scale(1); transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+        <div onclick="prevImage()" style="position: absolute; left: 30px; width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; user-select: none; z-index: 2100; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+            <span style="font-size: 40px; margin-right: 4px; pointer-events: none;">&#8249;</span>
         </div>
 
+        <!-- Obrázok -->
+        <img id="lightbox-img" src="" style="max-width: 80%; max-height: 80vh; border: 1px solid #333; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.8); opacity: 1; transition: opacity 0.3s ease-in-out;">
+
         <!-- Tlačidlo Doprava -->
-        <div onclick="nextImage()" style="position: absolute; right: 30px; width: 60px; height: 60px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 40px; cursor: pointer; user-select: none; z-index: 2100; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='scale(1.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='scale(1)'">&#8250;</div>
+        <div onclick="nextImage()" style="position: absolute; right: 30px; width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; user-select: none; z-index: 2100; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+            <span style="font-size: 40px; margin-left: 4px; pointer-events: none;">&#8250;</span>
+        </div>
     </div>
 
     <footer style="text-align: center; padding: 40px; font-size: 12px; color: #888; border-top: 1px solid #111; margin-top: 50px;">
@@ -105,7 +106,6 @@
             currentIndex = index;
             const img = document.getElementById('lightbox-img');
             img.style.opacity = '1';
-            img.style.transform = 'scale(1)';
             img.src = images[currentIndex];
             document.getElementById('lightbox').style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -122,40 +122,29 @@
 
             const img = document.getElementById('lightbox-img');
             
-            // Animácia von
+            // Fade out
             img.style.opacity = '0';
-            img.style.transform = 'scale(0.95) translateY(10px)';
 
             setTimeout(() => {
                 currentIndex = newIndex;
                 img.src = images[currentIndex];
 
                 img.onload = () => {
-                    // Animácia dnu
+                    // Fade in
                     img.style.opacity = '1';
-                    img.style.transform = 'scale(1) translateY(0)';
                     isAnimating = false;
                 };
 
-                // Poistka ak by bol obrázok z cache
-                setTimeout(() => {
-                    if (isAnimating) {
-                        img.style.opacity = '1';
-                        img.style.transform = 'scale(1) translateY(0)';
-                        isAnimating = false;
-                    }
-                }, 100);
-
-            }, 300); 
+                // Poistka ak by bol image v cache
+                if (img.complete) {
+                    img.style.opacity = '1';
+                    isAnimating = false;
+                }
+            }, 300); // Zhoda s transition 0.3s
         }
 
-        function nextImage() {
-            updateImage((currentIndex + 1) % images.length);
-        }
-
-        function prevImage() {
-            updateImage((currentIndex - 1 + images.length) % images.length);
-        }
+        function nextImage() { updateImage((currentIndex + 1) % images.length); }
+        function prevImage() { updateImage((currentIndex - 1 + images.length) % images.length); }
 
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('lightbox').style.display === 'flex') {
