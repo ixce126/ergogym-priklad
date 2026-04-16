@@ -36,7 +36,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(10, 10, 10, 0.9);
             backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
@@ -80,14 +80,13 @@
             overflow: hidden;
         }
 
-        /* Kontajner pre obrázky pozadia */
         .hero-slideshow {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 1;
         }
 
         .hero-slide {
@@ -99,14 +98,13 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out; /* Hladká animácia */
+            transition: opacity 0.8s ease-in-out; /* Rýchlejší plynulý prechod */
         }
 
         .hero-slide.active {
             opacity: 1;
         }
 
-        /* Tmavý filter cez obrázky pre čitateľnosť textu */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -114,12 +112,12 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8));
-            z-index: 0;
+            z-index: 2;
         }
 
         header h1, header p {
             position: relative;
-            z-index: 1;
+            z-index: 3;
         }
 
         header h1 {
@@ -149,20 +147,22 @@
         .pricing-container {
             display: flex;
             gap: 40px;
-            align-items: flex-start;
+            align-items: stretch;
             flex-wrap: wrap;
         }
 
         .pricing-side {
             flex: 2;
-            min-width: 300px;
+            min-width: 350px;
+            display: flex;
+            flex-direction: column;
         }
 
         .hours-side {
             flex: 1;
             min-width: 300px;
-            position: sticky;
-            top: 120px;
+            display: flex;
+            flex-direction: column;
         }
 
         .section-title {
@@ -170,6 +170,7 @@
             font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 30px;
+            height: 50px;
         }
 
         .section-title span { color: var(--primary); }
@@ -178,6 +179,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
+            flex-grow: 1;
         }
 
         .price-card {
@@ -187,6 +189,9 @@
             text-align: center;
             border: 1px solid #222;
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .price-card:hover { border-color: var(--primary); }
@@ -210,22 +215,28 @@
             margin-top: 8px;
         }
 
+        /* Otváracie hodiny */
         .hours-mini {
             background: var(--dark-grey);
             padding: 30px;
             border-radius: 12px;
-            border-top: 4px solid var(--primary);
+            border: 1px solid #222; 
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .hours-row {
             display: flex;
             justify-content: space-between;
-            padding: 15px 0;
+            padding: 10px 0;
             border-bottom: 1px solid #222;
+            font-size: 14px;
         }
 
-        .hours-row:last-child { border: none; }
-        .hours-row span:last-child { color: var(--primary); font-weight: bold; }
+        .hours-row:last-of-type { border: none; }
+        .hours-row span:last-child { color: var(--primary); font-weight: 700; }
 
         /* Sekcia Aplikácia */
         .app-full-section {
@@ -301,15 +312,13 @@
             background: var(--black);
         }
 
-        /* Responzivita */
         @media (max-width: 1024px) {
             .pricing-container { flex-direction: column; }
             .pricing-side, .hours-side { flex: none; width: 100%; }
-            .hours-side { position: static; margin-top: 40px; }
+            .section-title { height: auto; }
             .app-image-side { height: 50vh; order: -1; }
             .app-full-section { flex-direction: column; }
             .app-text-side { padding: 60px 8%; text-align: center; }
-            .store-btns { justify-content: center; }
         }
 
         @media (max-width: 768px) {
@@ -332,15 +341,12 @@
     </nav>
 
     <header>
-        <div class="hero-slideshow" id="slideshow">
-            <!-- Obrázky sa vygenerujú cez JavaScript pre čistý kód -->
-        </div>
+        <div class="hero-slideshow" id="slideshow"></div>
         <div class="hero-overlay"></div>
         <h1>ERGO GYM</h1>
         <p>Autonómne fitness centrum</p>
     </header>
 
-    <!-- Sekcia 1: Cenník a Hodiny -->
     <section class="full-section">
         <div class="pricing-container">
             <div class="pricing-side">
@@ -355,7 +361,7 @@
                         <div class="amount">4,50 €</div>
                         <p class="note">* V čase od 7:00 do 16:00</p>
                     </div>
-                    <div class="price-card" style="border-color: var(--primary);">
+                    <div class="price-card">
                         <h3>Mesačná permanentka</h3>
                         <div class="amount">53 €</div>
                         <p class="note">* Platnosť 30 dní od zakúpenia</p>
@@ -381,17 +387,18 @@
             <div class="hours-side">
                 <h2 class="section-title">Otváracie <span>Hodiny</span></h2>
                 <div class="hours-mini">
-                    <div class="hours-row"><span>Pondelok - Piatok</span><span>07:00 – 20:00</span></div>
-                    <div class="hours-row"><span>Sobota - Nedeľa</span><span>09:00 – 13:00</span></div>
-                    <p style="font-size: 11px; color: var(--text-muted); margin-top: 20px; text-align: center;">
-                        Vstup do fitness centra je možný len s platnou registráciou v aplikácii.
-                    </p>
+                    <div class="hours-row"><span>Pondelok</span><span>07:00 – 20:00</span></div>
+                    <div class="hours-row"><span>Utorok</span><span>07:00 – 20:00</span></div>
+                    <div class="hours-row"><span>Streda</span><span>07:00 – 20:00</span></div>
+                    <div class="hours-row"><span>Štvrtok</span><span>07:00 – 20:00</span></div>
+                    <div class="hours-row"><span>Piatok</span><span>07:00 – 20:00</span></div>
+                    <div class="hours-row"><span>Sobota</span><span>09:00 – 13:00</span></div>
+                    <div class="hours-row"><span>Nedeľa</span><span>09:00 – 13:00</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sekcia 2: Aplikácia -->
     <section class="app-full-section">
         <div class="app-container">
             <div class="app-text-side">
@@ -399,8 +406,6 @@
                 <p>Spúšťame novú mobilnú aplikáciu fitnes centra Ergo gym.</p>
                 <p>Maj svoju virtuálnu permanentku fitnes centra vždy po ruke a buď informovaný o všetkých novinkách.</p>
                 <p style="font-weight: bold; color: var(--primary);">Dostupná pre Android a Apple store.</p>
-                <p>Využiť ju môžeš pri vstupe do nášho autonómneho fitnes centra.</p>
-                
                 <div class="store-btns">
                     <a href="https://apps.apple.com/us/app/ergogym-bratislava/id6514317859" target="_blank" class="btn">App Store</a>
                     <a href="https://play.google.com/store/apps/details?id=com.ergogym&hl=sk" target="_blank" class="btn">Google Play</a>
@@ -417,39 +422,39 @@
     </footer>
 
     <script>
-        const imageUrls = [
-            'https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg',
-            'https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102851-1536x1153.jpg',
-            'https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102951-1536x1153.jpg',
-            'https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102828-1536x1153.jpg',
-            'https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102937-1536x1153.jpg',
-            'https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094622-1536x1153.jpg',
-            'https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_093239-1536x1153.jpg',
-            'https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094634-1536x1153.jpg',
-            'https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102803-1536x1153.jpg'
+        const images = [
+            "https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg",
+            "https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102851-1536x1153.jpg",
+            "https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102951-1536x1153.jpg",
+            "https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102828-1536x1153.jpg",
+            "https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102937-1536x1153.jpg",
+            "https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094622-1536x1153.jpg",
+            "https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_093239-1536x1153.jpg",
+            "https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094634-1536x1153.jpg",
+            "https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102803-1536x1153.jpg"
         ];
 
-        const slideshow = document.getElementById('slideshow');
-        
-        // Vytvorenie elementov pre obrázky
-        imageUrls.forEach((url, index) => {
-            const div = document.createElement('div');
-            div.className = 'hero-slide' + (index === 0 ? ' active' : '');
-            div.style.backgroundImage = `url('${url}')`;
-            slideshow.appendChild(div);
+        const container = document.getElementById('slideshow');
+
+        // Vytvorenie slajdov
+        images.forEach((src, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'hero-slide' + (index === 0 ? ' active' : '');
+            slide.style.backgroundImage = `url('${src}')`;
+            container.appendChild(slide);
         });
 
         const slides = document.querySelectorAll('.hero-slide');
-        let currentSlide = 0;
+        let current = 0;
 
         function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
         }
 
-        // Interval striedania (5 sekúnd)
-        setInterval(nextSlide, 5000);
+        // Striedanie každé 3 sekundy (rýchlejšie)
+        setInterval(nextSlide, 3000);
     </script>
 </body>
 </html>
