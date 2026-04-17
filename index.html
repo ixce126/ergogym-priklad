@@ -36,7 +36,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* Balanced Height */
             padding: 22px 8%; 
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
@@ -50,13 +49,12 @@
 
         nav .logo {
             font-weight: 900;
-            /* Bigger Logo */
             font-size: 32px;
             text-decoration: none;
             color: var(--white);
             text-transform: uppercase;
             position: relative;
-            z-index: 1; /* Keep logo under the side menu layer */
+            z-index: 1;
         }
 
         nav .logo span { color: var(--primary); }
@@ -72,7 +70,6 @@
             color: var(--white);
             text-decoration: none;
             text-transform: uppercase;
-            /* Bigger Links */
             font-size: 17px;
             font-weight: 800;
             letter-spacing: 1px;
@@ -81,13 +78,13 @@
 
         nav ul li a:hover { color: var(--primary); }
 
-        /* Hamburger Menu Icon */
+        /* Hamburger */
         .hamburger {
             display: none;
             cursor: pointer;
             flex-direction: column;
             gap: 7px;
-            z-index: 3001; /* Above the side menu */
+            z-index: 3001;
             padding: 5px;
         }
 
@@ -100,7 +97,6 @@
             border-radius: 2px;
         }
 
-        /* Hamburger Animation */
         .hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); background-color: var(--primary); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); background-color: var(--primary); }
@@ -177,17 +173,38 @@
             margin: 0 auto;
         }
 
-        .pricing-container { display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap; }
+        .pricing-container { 
+            display: flex; 
+            gap: 100px; /* Zväčšená medzera medzi stĺpcami */
+            align-items: stretch; 
+            flex-wrap: wrap; 
+        }
+
         .pricing-side { flex: 2; min-width: 350px; display: flex; flex-direction: column; }
-        .hours-side { flex: 1; min-width: 300px; display: flex; flex-direction: column; }
-        .section-title { font-size: clamp(24px, 3.5vw, 32px); font-weight: 900; text-transform: uppercase; margin-bottom: 30px; height: 50px; display: flex; align-items: center; letter-spacing: 1px; }
+        .hours-side { flex: 1.2; min-width: 300px; display: flex; flex-direction: column; }
+
+        .section-title { 
+            font-size: clamp(24px, 3.5vw, 32px); 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            margin-bottom: 30px; 
+            height: 50px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; /* Zarovnanie textu na stred horizontálne */
+            text-align: center; 
+            letter-spacing: 1px; 
+        }
+
         .section-title span { color: var(--primary); margin-left: 10px; }
+        
         .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; flex-grow: 1; }
         .price-card { background: var(--dark-grey); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #222; display: flex; flex-direction: column; justify-content: center; transition: 0.3s; }
         .price-card:hover { border-color: var(--primary); }
         .price-card h3 { font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
         .price-card .amount { font-size: 32px; font-weight: 900; color: var(--primary); }
         .price-card .note { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+        
         .hours-mini { background: var(--dark-grey); padding: 30px; border-radius: 12px; border: 1px solid #222; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .hours-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; font-size: 14px; }
         .hours-row:last-child { border: none; }
@@ -208,30 +225,26 @@
 
         footer { text-align: center; padding: 40px; color: #444; font-size: 12px; background: var(--black); }
 
-        /* Updated Breakpoint to accommodate larger text */
         @media (max-width: 992px) {
             .hamburger { display: flex; }
-
             nav ul {
                 position: fixed;
                 top: 0;
-                right: -100%; /* Hidden side */
+                right: -100%;
                 width: 80%;
                 height: 100vh;
-                background: #0a0a0a; /* Solid background so logo doesn't show through */
+                background: #0a0a0a;
                 flex-direction: column;
                 justify-content: center;
                 gap: 40px;
                 transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
                 box-shadow: -15px 0 40px rgba(0,0,0,0.9);
-                z-index: 3000; /* Layered over the logo */
+                z-index: 3000;
             }
-
             nav ul.active { right: 0; }
             nav ul li a { font-size: 24px; }
 
-            /* Grid Adjustments */
-            .pricing-container { flex-direction: column; }
+            .pricing-container { flex-direction: column; gap: 60px; }
             .pricing-side, .hours-side { flex: none; width: 100%; }
             .app-image-side { height: 50vh; order: 2; }
             .app-text-side { order: 1; text-align: center; padding: 60px 8%; }
@@ -251,13 +264,11 @@
 
     <nav>
         <a href="index.html" class="logo">ERGO <span>GYM</span></a>
-        
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
-
         <ul id="nav-links">
             <li><a href="index.html">Domov</a></li>
             <li><a href="galeria.html">Galéria</a></li>
@@ -274,6 +285,7 @@
 
     <section class="full-section">
         <div class="pricing-container">
+            <!-- Cenník -->
             <div class="pricing-side">
                 <h2 class="section-title">Aktuálny <span>Cenník</span></h2>
                 <div class="pricing-grid">
@@ -309,6 +321,7 @@
                 </div>
             </div>
 
+            <!-- Otváracie hodiny -->
             <div class="hours-side">
                 <h2 class="section-title">Otváracie <span>Hodiny</span></h2>
                 <div class="hours-mini">
