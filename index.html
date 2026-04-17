@@ -36,7 +36,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 8%;
+            /* Balanced Height */
+            padding: 22px 8%; 
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
@@ -44,30 +45,65 @@
             width: 100%;
             z-index: 1000;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s ease;
         }
 
         nav .logo {
             font-weight: 900;
-            font-size: 22px;
+            /* Bigger Logo */
+            font-size: 32px;
             text-decoration: none;
             color: var(--white);
             text-transform: uppercase;
+            position: relative;
+            z-index: 1; /* Keep logo under the side menu layer */
         }
 
         nav .logo span { color: var(--primary); }
 
-        nav ul { display: flex; list-style: none; gap: 25px; }
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 40px; 
+            align-items: center;
+        }
 
         nav ul li a {
             color: var(--white);
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 13px;
-            font-weight: 700;
+            /* Bigger Links */
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: 1px;
             transition: 0.3s;
         }
 
         nav ul li a:hover { color: var(--primary); }
+
+        /* Hamburger Menu Icon */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 7px;
+            z-index: 3001; /* Above the side menu */
+            padding: 5px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 32px;
+            height: 3px;
+            background-color: var(--white);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hamburger Animation */
+        .hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); background-color: var(--primary); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); background-color: var(--primary); }
 
         /* Hero Sekcia */
         header {
@@ -134,197 +170,78 @@
             font-size: clamp(12px, 2.5vw, 16px);
         }
 
-        /* Sekcia Cenník + Hodiny */
+        /* Pricing & Hours Layout */
         .full-section {
             padding: 120px 8%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .pricing-container {
-            display: flex;
-            gap: 40px;
-            align-items: stretch; /* Dôležité: Natiahne stĺpce na rovnakú výšku */
-            flex-wrap: wrap;
-        }
-
-        .pricing-side { 
-            flex: 2; 
-            min-width: 350px; 
-            display: flex; 
-            flex-direction: column; 
-        }
-
-        .hours-side { 
-            flex: 1; 
-            min-width: 300px; 
-            display: flex; 
-            flex-direction: column; 
-        }
-
-        .section-title {
-            font-size: clamp(24px, 3.5vw, 32px);
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            height: 50px; 
-            display: flex;
-            align-items: center;
-            letter-spacing: 1px; /* Pridaná jemná medzera v nadpise */
-        }
-
+        .pricing-container { display: flex; gap: 40px; align-items: stretch; flex-wrap: wrap; }
+        .pricing-side { flex: 2; min-width: 350px; display: flex; flex-direction: column; }
+        .hours-side { flex: 1; min-width: 300px; display: flex; flex-direction: column; }
+        .section-title { font-size: clamp(24px, 3.5vw, 32px); font-weight: 900; text-transform: uppercase; margin-bottom: 30px; height: 50px; display: flex; align-items: center; letter-spacing: 1px; }
         .section-title span { color: var(--primary); margin-left: 10px; }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            flex-grow: 1; /* Vyplní dostupnú výšku */
-        }
-
-        .price-card {
-            background: var(--dark-grey);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #222;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            transition: 0.3s;
-        }
-
+        .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; flex-grow: 1; }
+        .price-card { background: var(--dark-grey); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #222; display: flex; flex-direction: column; justify-content: center; transition: 0.3s; }
         .price-card:hover { border-color: var(--primary); }
-
-        .price-card h3 {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .price-card .amount {
-            font-size: 32px;
-            font-weight: 900;
-            color: var(--primary);
-        }
-
-        .price-card .note {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-top: 8px;
-        }
-
-        /* Otváracie hodiny - Zarovnanie výšky */
-        .hours-mini {
-            background: var(--dark-grey);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #222;
-            flex-grow: 1; /* Vyplní dostupnú výšku aby lícoval s cenníkom */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Rozloží riadky rovnomerne */
-        }
-
-        .hours-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #222;
-            font-size: 14px;
-        }
-
+        .price-card h3 { font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
+        .price-card .amount { font-size: 32px; font-weight: 900; color: var(--primary); }
+        .price-card .note { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+        .hours-mini { background: var(--dark-grey); padding: 30px; border-radius: 12px; border: 1px solid #222; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .hours-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; font-size: 14px; }
         .hours-row:last-child { border: none; }
         .hours-row span:last-child { color: var(--primary); font-weight: 700; }
 
-        /* Sekcia Aplikácia */
-        .app-full-section {
-            min-height: 100vh;
-            background-color: var(--dark-grey);
-            display: flex;
-            align-items: center;
-        }
-
-        .app-container {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        .app-text-side {
-            flex: 1;
-            padding: 60px 8%;
-            min-width: 350px;
-        }
-
-        .app-text-side h2 {
-            font-size: clamp(32px, 5vw, 48px);
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            line-height: 1.1;
-        }
-
+        /* App Section */
+        .app-full-section { min-height: 100vh; background-color: var(--dark-grey); display: flex; align-items: center; }
+        .app-container { display: flex; align-items: center; flex-wrap: wrap; width: 100%; }
+        .app-text-side { flex: 1; padding: 60px 8%; min-width: 350px; }
+        .app-text-side h2 { font-size: clamp(32px, 5vw, 48px); font-weight: 900; text-transform: uppercase; margin-bottom: 25px; line-height: 1.1; }
         .app-text-side h2 span { color: var(--primary); }
         .app-text-side p { margin-bottom: 20px; font-size: 18px; color: #ccc; }
-
-        .app-image-side {
-            flex: 1.4;
-            height: 100vh;
-            min-width: 400px;
-        }
-
-        .app-image-side img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .store-btns {
-            display: flex;
-            gap: 15px;
-            margin-top: 35px;
-        }
-
-        .btn {
-            background: var(--white);
-            color: var(--black);
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 12px;
-            transition: 0.3s;
-        }
-
+        .app-image-side { flex: 1.4; height: 100vh; min-width: 400px; }
+        .app-image-side img { width: 100%; height: 100%; object-fit: cover; }
+        .store-btns { display: flex; gap: 15px; margin-top: 35px; }
+        .btn { background: var(--white); color: var(--black); padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: 900; text-transform: uppercase; font-size: 12px; transition: 0.3s; }
         .btn:hover { background: var(--primary); }
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #444;
-            font-size: 12px;
-            background: var(--black);
-        }
+        footer { text-align: center; padding: 40px; color: #444; font-size: 12px; background: var(--black); }
 
-        /* Responzivita */
-        @media (max-width: 1024px) {
+        /* Updated Breakpoint to accommodate larger text */
+        @media (max-width: 992px) {
+            .hamburger { display: flex; }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Hidden side */
+                width: 80%;
+                height: 100vh;
+                background: #0a0a0a; /* Solid background so logo doesn't show through */
+                flex-direction: column;
+                justify-content: center;
+                gap: 40px;
+                transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                box-shadow: -15px 0 40px rgba(0,0,0,0.9);
+                z-index: 3000; /* Layered over the logo */
+            }
+
+            nav ul.active { right: 0; }
+            nav ul li a { font-size: 24px; }
+
+            /* Grid Adjustments */
             .pricing-container { flex-direction: column; }
             .pricing-side, .hours-side { flex: none; width: 100%; }
-            .section-title { height: auto; margin-bottom: 20px; }
-            .hours-mini { gap: 10px; } /* Na mobile nepotrebujeme space-between */
             .app-image-side { height: 50vh; order: 2; }
             .app-text-side { order: 1; text-align: center; padding: 60px 8%; }
             .store-btns { justify-content: center; }
         }
 
-        @media (max-width: 768px) {
-            nav { flex-direction: column; gap: 10px; padding: 15px; }
+        @media (max-width: 600px) {
+            nav { padding: 15px 8%; }
+            nav .logo { font-size: 26px; }
             .pricing-grid { grid-template-columns: 1fr; }
-            .full-section { padding-top: 140px; }
             .store-btns { flex-direction: column; align-items: center; }
             .btn { width: 100%; max-width: 250px; text-align: center; }
         }
@@ -334,7 +251,14 @@
 
     <nav>
         <a href="index.html" class="logo">ERGO <span>GYM</span></a>
-        <ul>
+        
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul id="nav-links">
             <li><a href="index.html">Domov</a></li>
             <li><a href="galeria.html">Galéria</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
@@ -350,7 +274,6 @@
 
     <section class="full-section">
         <div class="pricing-container">
-            <!-- Cenník -->
             <div class="pricing-side">
                 <h2 class="section-title">Aktuálny <span>Cenník</span></h2>
                 <div class="pricing-grid">
@@ -386,7 +309,6 @@
                 </div>
             </div>
 
-            <!-- Hodiny -->
             <div class="hours-side">
                 <h2 class="section-title">Otváracie <span>Hodiny</span></h2>
                 <div class="hours-mini">
@@ -425,6 +347,21 @@
     </footer>
 
     <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
         const images = [
             "https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_094522-1536x1153.jpg",
             "https://www.ergogym.sk/wp-content/uploads/2022/08/IMG_20220801_102851-1536x1153.jpg",
@@ -438,7 +375,6 @@
         ];
 
         const container = document.getElementById('slideshow');
-
         images.forEach((src, index) => {
             const slide = document.createElement('div');
             slide.className = 'hero-slide' + (index === 0 ? ' active' : '');
@@ -448,13 +384,11 @@
 
         const slides = document.querySelectorAll('.hero-slide');
         let current = 0;
-
         function nextSlide() {
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
         }
-
         setInterval(nextSlide, 4000);
     </script>
 </body>
