@@ -71,22 +71,26 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: stretch;
+            align-items: stretch; /* Zabezpečí, že oba stĺpce budú rovnako vysoké */
         }
 
         .hours-card {
             background: #1a1a1a;
-            padding: 40px;
+            padding: 60px 40px; /* Zväčšený horný/dolný padding */
             border-radius: 15px;
             height: 100%;
-            position: relative; /* Nutné pre absolútne poziciovanie ikon vo vnútri */
+            min-height: 550px; /* Týmto nastavíte minimálnu výšku */
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         /* Sociálne ikony v pravom dolnom rohu */
         .social-icons {
             position: absolute;
-            bottom: 25px;
-            right: 25px;
+            bottom: 30px;
+            right: 30px;
             display: flex;
             gap: 15px;
             z-index: 10;
@@ -165,6 +169,7 @@
         .contact-form textarea {
             flex-grow: 1;
             resize: none;
+            min-height: 200px;
         }
 
         .btn-submit {
@@ -185,11 +190,11 @@
 
         @media (max-width: 768px) {
             .contact-wrapper { grid-template-columns: 1fr; }
+            .hours-card { min-height: auto; padding: 40px 30px; }
             .contact-form textarea { height: 250px; }
             nav { flex-direction: column; gap: 15px; }
             nav ul li { margin: 0 10px; }
-            /* Na mobiloch ich vrátime do toku, aby neprekrývali text, ak je div malý */
-            .social-icons { position: static; margin-top: 30px; justify-content: flex-end; }
+            .social-icons { position: static; margin-top: 40px; justify-content: flex-end; }
         }
     </style>
 </head>
@@ -208,17 +213,15 @@
         <div class="contact-wrapper">
             <div class="contact-info">
                 <div class="hours-card">
-                    <!-- Text, ktorý normálne vypĺňa div -->
-                    <h3 style="color: var(--primary); margin-bottom: 10px;">KDE NÁS NÁJDETE?</h3>
-                    <p style="font-size: 18px; font-weight: 700; margin-bottom: 25px;">Kazanská 4, 821 06 Podunajské Biskupice</p>
+                    <h3 style="color: var(--primary); margin-bottom: 15px; letter-spacing: 1px;">KDE NÁS NÁJDETE?</h3>
+                    <p style="font-size: 20px; font-weight: 700; margin-bottom: 45px;">Kazanská 4, 821 06<br>Podunajské Biskupice</p>
                     
-                    <h3 style="color: var(--primary); margin-bottom: 5px;">TELEFÓN</h3>
-                    <p style="font-size: 18px; font-weight: 700; margin-bottom: 25px;">0902 696 732</p>
+                    <h3 style="color: var(--primary); margin-bottom: 10px; letter-spacing: 1px;">TELEFÓN</h3>
+                    <p style="font-size: 20px; font-weight: 700; margin-bottom: 45px;">0902 696 732</p>
 
-                    <h3 style="color: var(--primary); margin-bottom: 5px;">EMAIL</h3>
-                    <p style="font-size: 18px; font-weight: 700;">info@ergogym.sk</p>
+                    <h3 style="color: var(--primary); margin-bottom: 10px; letter-spacing: 1px;">EMAIL</h3>
+                    <p style="font-size: 20px; font-weight: 700;">info@ergogym.sk</p>
 
-                    <!-- Ikony v rohu - nijak neovplyvňujú text hore -->
                     <div class="social-icons">
                         <a href="https://www.facebook.com/ergogym4" target="_blank" class="social-icon" title="Facebook">
                             <i class="fab fa-facebook-f"></i>
